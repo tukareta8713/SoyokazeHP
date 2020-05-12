@@ -1,0 +1,244 @@
+/* [nodename, id, name, navigationtext, href, isnavigation, childs[], templatename] */
+
+if (typeof(decodeURIComponent) == 'undefined') {
+  decodeURIComponent = function(s) {
+    return unescape(s);
+  }
+}
+
+function jdecode(s) {
+    s = s.replace(/\+/g, "%20")
+    return decodeURIComponent(s);
+}
+
+var POS_NODENAME=0;
+var POS_ID=1;
+var POS_NAME=2;
+var POS_NAVIGATIONTEXT=3;
+var POS_HREF=4;
+var POS_ISNAVIGATION=5;
+var POS_CHILDS=6;
+var POS_TEMPLATENAME=7;
+var POS_TARGET=8;
+var theSitetree=[ 
+	['PAGE','1901',jdecode('%E3%83%9B%E3%83%BC%E3%83%A0'),jdecode(''), jdecode('%2F1901.html'), 'true',[],'',''],
+	['PAGE','1973',jdecode('%E6%B4%BB%E5%8B%95%E5%86%85%E5%AE%B9'),jdecode(''), jdecode('%2F1973.html'), 'true',[],'',''],
+	['PAGE','1994',jdecode('%E3%82%AB%E3%83%95%E3%82%A7%E3%80%80%E3%81%9D%E3%82%88%E3%81%8B%E3%81%9C'),jdecode(''), jdecode('%2F1994.html'), 'true',[],'',''],
+	['PAGE','2015',jdecode('%E3%82%A4%E3%83%99%E3%83%B3%E3%83%88%E3%80%81%E8%BF%91%E6%B3%81%E3%83%9A%E3%83%BC%E3%82%B8'),jdecode(''), jdecode('%2F2015.html'), 'true',[],'',''],
+	['PAGE','2036',jdecode('%E3%81%8A%E5%95%8F%E5%90%88%E3%81%9B%E5%85%88'),jdecode(''), jdecode('%2F2036.html'), 'true',[],'','']];
+var siteelementCount=5;
+theSitetree.topTemplateName='Case';
+theSitetree.paletteFamily='CE551F';
+theSitetree.keyvisualId='11335';
+theSitetree.keyvisualName='kv_11335.jpg';
+theSitetree.fontsetId='35341';
+theSitetree.graphicsetId='13782';
+theSitetree.contentColor='463C38';
+theSitetree.contentBGColor='F6FBFE';
+var localeDef={
+  language: 'ja',
+  country: 'JP'
+};
+var prodDef={
+  wl_name: 'pageon',
+  product: 'WSCSYSSSSLYTCP86'
+};
+var theTemplate={
+				hasFlashNavigation: 'false',
+				hasFlashLogo: 	'false',
+				hasFlashCompanyname: 'false',
+				hasFlashElements: 'false',
+				hasCompanyname: 'false',
+				name: 			'Case',
+				paletteFamily: 	'CE551F',
+				keyvisualId: 	'11335',
+				keyvisualName: 	'kv_11335.jpg',
+				fontsetId: 		'35341',
+				graphicsetId: 	'13782',
+				contentColor: 	'463C38',
+				contentBGColor: 'F6FBFE',
+				a_color: 		'000000',
+				b_color: 		'000000',
+				c_color: 		'000000',
+				d_color: 		'000000',
+				e_color: 		'000000',
+				f_color: 		'000000',
+				hasCustomLogo: 	'false',
+				contentFontFace:'MS PGothic',
+				contentFontSize:'12',
+				useFavicon:     'false'
+			  };
+var webappMappings = {};
+webappMappings['5000']=webappMappings['5000--']={
+webappId:    '5000',
+documentId:  '1901',
+internalId:  '-',
+customField: '20140901-105811'
+};
+webappMappings['1006']=webappMappings['1006-1006']={
+webappId:    '1006',
+documentId:  '1901',
+internalId:  '1006',
+customField: '1006'
+};
+webappMappings['5000']=webappMappings['5000--']={
+webappId:    '5000',
+documentId:  '1973',
+internalId:  '-',
+customField: '20131224-111354'
+};
+webappMappings['5000']=webappMappings['5000--']={
+webappId:    '5000',
+documentId:  '1994',
+internalId:  '-',
+customField: '20141201-145324'
+};
+webappMappings['5000']=webappMappings['5000--']={
+webappId:    '5000',
+documentId:  '2015',
+internalId:  '-',
+customField: '20141201-150137'
+};
+webappMappings['5000']=webappMappings['5000--']={
+webappId:    '5000',
+documentId:  '2036',
+internalId:  '-',
+customField: '20141024-151619'
+};
+var webAppHostname = 'diycgi.cluster.mlpsca01.us.diy-servers.net:80';
+var canonHostname = 'diywk02.cluster.mlpsca01.us.diy-servers.net';
+var accountId     = 'AVESJ0INELP2';
+var companyName   = 'NPO%E6%B3%95%E4%BA%BA%E3%80%80%E3%82%89%E3%81%97%E3%82%93%E7%9B%A4%E3%80%80%E3%81%9D%E3%82%88%E3%81%8B%E3%81%9C';
+var htmlTitle	  = '';
+var metaKeywords  = '';
+var metaContents  = '';
+theSitetree.getById = function(id, ar) {
+	if (typeof(ar) == 'undefined'){
+		ar = this;
+	}
+	for (var i=0; i < ar.length; i++) {
+		if (ar[i][POS_ID] == id){
+			return ar[i];
+		}
+		if (ar[i][POS_CHILDS].length > 0) {
+			var result=this.getById(id, ar[i][POS_CHILDS]);
+			if (result != null){
+				return result;
+			}
+		}
+	}
+	return null;
+};
+
+theSitetree.getParentById = function(id, ar) {
+	if (typeof(ar) == 'undefined'){
+		ar = this;
+	}
+	for (var i=0; i < ar.length; i++) {
+		for (var j = 0; j < ar[i][POS_CHILDS].length; j++) {
+			if (ar[i][POS_CHILDS][j][POS_ID] == id) {
+				// child found
+				return ar[i];
+			}
+			var result=this.getParentById(id, ar[i][POS_CHILDS]);
+			if (result != null){
+				return result;
+			}
+		}
+	}
+	return null;
+};
+
+theSitetree.getName = function(id) {
+	var elem = this.getById(id);
+	if (elem != null){
+		return elem[POS_NAME];
+	}
+	return null;
+};
+
+theSitetree.getNavigationText = function(id) {
+	var elem = this.getById(id);
+	if (elem != null){
+		return elem[POS_NAVIGATIONTEXT];
+	}
+	return null;
+};
+
+theSitetree.getHREF = function(id) {
+	var elem = this.getById(id);
+	if (elem != null){
+		return elem[POS_HREF];
+	}
+	return null;
+};
+
+theSitetree.getIsNavigation = function(id) {
+	var elem = this.getById(id);
+	if (elem != null){
+		return elem[POS_ISNAVIGATION];
+	}
+	return null;
+};
+
+theSitetree.getTemplateName = function(id, lastTemplateName, ar) {
+	if (typeof(lastTemplateName) == 'undefined'){
+		lastTemplateName = this.topTemplateName;
+	}
+	if (typeof(ar) == 'undefined'){
+		ar = this;
+	}
+	for (var i=0; i < ar.length; i++) {
+		var actTemplateName = ar[i][POS_TEMPLATENAME];
+		if (actTemplateName == ''){
+			actTemplateName = lastTemplateName;
+		}
+		if (ar[i][POS_ID] == id) {
+			return actTemplateName;
+		}
+		if (ar[i][POS_CHILDS].length > 0) {
+			var result=this.getTemplateName(id, actTemplateName, ar[i][POS_CHILDS]);
+			if (result != null){
+				return result;
+			}
+		}
+	}
+	return null;
+};
+
+theSitetree.getByXx = function(lookup, xx, ar) {
+    if (typeof(ar) == 'undefined'){
+    	ar = this;
+    }
+    for (var i=0; i < ar.length; i++) {
+        if (ar[i][xx] == lookup){
+        	return ar[i];
+        }
+        if (ar[i][POS_CHILDS].length > 0) {
+        	var result=this.getByXx(lookup, xx, ar[i][POS_CHILDS]);
+            if (result != null){
+                return result;
+               }
+        }
+    }
+    return null;
+};
+
+function gotoPage(lookup) {
+	if(__path_prefix__ == "/servlet/CMServeRES" && typeof (changePage) == 'function'){
+		changePage(lookup);
+		return;
+	}
+	var page = theSitetree.getHREF(lookup);
+	if (!page) {
+		var testFor = [ POS_NAME, POS_NAVIGATIONTEXT ];
+		for (var i=0 ; i < testFor.length ; i++) {
+			var p = theSitetree.getByXx(lookup, testFor[i]);
+			if (p != null) {
+				page = p[POS_HREF];
+				break;
+			}
+		}
+	}
+	document.location.href = (new URL(__path_prefix__ + page, true, true)).toString();
+};
